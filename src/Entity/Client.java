@@ -4,7 +4,10 @@
  */
 package Entity;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -42,6 +45,7 @@ public class Client {
         sesReleves.add(r);
     }
     
+    
     public int CalculerConsomation()
     {
         if (sesReleves.isEmpty())
@@ -66,5 +70,49 @@ public class Client {
         }
         int ancienneVal = this.sesReleves.get(this.sesReleves.size() - 1).getValeurReleve();
         return ancienneVal <= nouvelleValeur;
+    }
+    
+    public boolean VerifierNouvelleDate(String nouvelleDate)
+    {
+        if(this.sesReleves.isEmpty())
+        {
+            return true;
+        }
+        String ancienneDate = this.sesReleves.get(this.sesReleves.size() - 1).getDate();
+        boolean years = false;
+        boolean months = false;
+        int i = 0;
+        while (i < 4 && ancienneDate.charAt(i) <= nouvelleDate.charAt(i))
+        {
+            i++;
+        }
+        if (i == 4)
+        {
+            years = true;
+            i++;
+            while (i < 7 && ancienneDate.charAt(i) <= nouvelleDate.charAt(i))
+            {
+                i++;
+            }
+            if (i == 7)
+            {
+                months = true;
+                i++;
+                while (i < 10 && ancienneDate.charAt(i) <= nouvelleDate.charAt(i))
+                {
+                    i++;
+                }
+                return years == months == (i == 10);
+                
+            }
+            else
+            {
+                return months;
+            }
+        }
+        else
+        {
+            return years;
+        }
     }
 }

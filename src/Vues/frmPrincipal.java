@@ -7,8 +7,11 @@ package Vues;
 import Entity.Agent;
 import Entity.Client;
 import Entity.Releve;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Vector;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -56,7 +59,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtReleve = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        DateChooser = new com.toedter.calendar.JDateChooser();
+        dateChooser = new com.toedter.calendar.JDateChooser();
         btnInserer = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -183,8 +186,8 @@ public class frmPrincipal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(54, 54, 54)
-                        .addComponent(txtConso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtConso, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,12 +206,11 @@ public class frmPrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(btnInserer, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jLabel7)
-                                .addComponent(jLabel6)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(txtReleve, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                                .addComponent(DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(txtReleve, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                            .addComponent(dateChooser, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
@@ -223,24 +225,22 @@ public class frmPrincipal extends javax.swing.JFrame {
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel1))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtConso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))))
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel1))))
                 .addGap(18, 18, 18)
                 .addComponent(txtReleve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
-                .addComponent(DateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(btnInserer)
                 .addContainerGap(81, Short.MAX_VALUE))
@@ -390,7 +390,60 @@ public class frmPrincipal extends javax.swing.JFrame {
 
     private void btnInsererMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInsererMouseClicked
         // TODO add your handling code here:
-        
+        Date dateVerif = dateChooser.getDate();
+        if (txtReleve.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Il n'y a pas de nouvelle valeur inserer", "Pas de valeur", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (dateVerif == null)
+        {
+            JOptionPane.showMessageDialog(null, "Il n'y a pas de nouvelle date inserer", "Pas de date", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (tblClient.getSelectionModel().isSelectionEmpty())
+        {
+            JOptionPane.showMessageDialog(null, "Il n'y a pas de nouveau client selectioner", "Pas de client", JOptionPane.ERROR_MESSAGE);
+        }
+        else
+        {
+            String getNewReleve = txtReleve.getText();
+            SimpleDateFormat dcn = new SimpleDateFormat("yyyy-MM-dd");
+            String date = dcn.format(dateChooser.getDate());
+            Releve r = new Releve(date, Integer.parseInt(getNewReleve));
+            int numAgentSelected = Integer.parseInt(tblAgent.getValueAt(tblAgent.getSelectedRow(), 0).toString());
+            int numClientSelected = Integer.parseInt(tblClient.getValueAt(tblClient.getSelectedRow(), 0).toString());
+            for(Agent agt : mesAgents)
+            {
+                if(agt.getNumAgent() == numAgentSelected)
+                {
+                    for(Client c : agt.getSesClients())
+                    {
+                        if(c.getNumClient() == numClientSelected)
+                        {
+                            if (!c.VerifierValeurNouveauReleve(Integer.parseInt(getNewReleve)))
+                            {
+                                JOptionPane.showMessageDialog(null, "Le nouveau releve est inferieur à l'ancienne", "Mauvaise valeur", JOptionPane.ERROR_MESSAGE);
+                            }
+                            else if (!c.VerifierNouvelleDate(date))
+                            {
+                                JOptionPane.showMessageDialog(null, "La nouvelle date est inferieur à l'ancienne", "Mauvaise valeur date", JOptionPane.ERROR_MESSAGE);
+                            }
+                            else
+                            {
+                                c.AjouterUnReleve(r);
+                                v = new Vector();
+                                v.add(r.getDate());
+                                v.add(r.getValeurReleve());
+                                dtmReleves.addRow(v);
+                                tblReleve.setModel(dtmReleves);
+                                String conso = String.valueOf(c.CalculerConsomation());
+                                txtConso.setText(conso);
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }        
     }//GEN-LAST:event_btnInsererMouseClicked
 
     
@@ -430,8 +483,8 @@ public class frmPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser DateChooser;
     private javax.swing.JButton btnInserer;
+    public com.toedter.calendar.JDateChooser dateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -445,7 +498,7 @@ public class frmPrincipal extends javax.swing.JFrame {
     private javax.swing.JTable tblAgent;
     private javax.swing.JTable tblClient;
     private javax.swing.JTable tblReleve;
-    private javax.swing.JTextField txtConso;
-    private javax.swing.JTextField txtReleve;
+    public javax.swing.JTextField txtConso;
+    public javax.swing.JTextField txtReleve;
     // End of variables declaration//GEN-END:variables
 }

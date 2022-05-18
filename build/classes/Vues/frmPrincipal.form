@@ -31,8 +31,8 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Component id="txtConso" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="txtConso" min="-2" pref="77" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -57,13 +57,11 @@
                       <EmptySpace pref="36" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="btnInserer" pref="225" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" pref="0" max="32767" attributes="0"/>
-                              <Component id="txtReleve" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="DateChooser" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="txtReleve" alignment="0" pref="225" max="32767" attributes="0"/>
+                          <Component id="dateChooser" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -84,20 +82,15 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane1" min="-2" pref="127" max="-2" attributes="0"/>
-                          <Component id="jScrollPane3" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jScrollPane1" min="-2" pref="127" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" alignment="0" min="-2" pref="127" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane2" min="-2" pref="127" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtConso" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -106,7 +99,7 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="DateChooser" min="-2" max="-2" attributes="0"/>
+              <Component id="dateChooser" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               <Component id="btnInserer" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="81" max="32767" attributes="0"/>
@@ -179,6 +172,9 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="txtConso">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
@@ -217,13 +213,19 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtReleve">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">
       <Properties>
         <Property name="text" type="java.lang.String" value="Date du relev&#xe9;"/>
       </Properties>
     </Component>
-    <Component class="com.toedter.calendar.JDateChooser" name="DateChooser">
+    <Component class="com.toedter.calendar.JDateChooser" name="dateChooser">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="btnInserer">
       <Properties>
